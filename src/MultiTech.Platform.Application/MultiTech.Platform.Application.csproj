@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MultiTech.Platform.Domain\MultiTech.Platform.Domain.csproj" />
+    <ProjectReference Include="..\MultiTech.Platform.Contracts\MultiTech.Platform.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

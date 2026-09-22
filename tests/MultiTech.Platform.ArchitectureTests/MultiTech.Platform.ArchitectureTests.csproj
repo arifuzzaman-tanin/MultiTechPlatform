@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Api\MultiTech.Platform.Api.csproj" />
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Application\MultiTech.Platform.Application.csproj" />
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Contracts\MultiTech.Platform.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Domain\MultiTech.Platform.Domain.csproj" />
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Infrastructure\MultiTech.Platform.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MultiTech.Platform.Api/MultiTech.Platform.Api.csproj" />
+    <Project Path="src/MultiTech.Platform.Application/MultiTech.Platform.Application.csproj" />
+    <Project Path="src/MultiTech.Platform.Contracts/MultiTech.Platform.Contracts.csproj" />
+    <Project Path="src/MultiTech.Platform.Domain/MultiTech.Platform.Domain.csproj" />
+    <Project Path="src/MultiTech.Platform.Infrastructure/MultiTech.Platform.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MultiTech.Platform.ArchitectureTests/MultiTech.Platform.ArchitectureTests.csproj" />
+    <Project Path="tests/MultiTech.Platform.FunctionalTests/MultiTech.Platform.FunctionalTests.csproj" />
+    <Project Path="tests/MultiTech.Platform.IntegrationTests/MultiTech.Platform.IntegrationTests.csproj" />
+    <Project Path="tests/MultiTech.Platform.UnitTests/MultiTech.Platform.UnitTests.csproj" />
+  </Folder>
+</Solution>
