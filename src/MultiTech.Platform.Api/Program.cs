@@ -30,6 +30,7 @@ app.UseAuthorization();
 
 app.MapHealthChecks("/health");
 app.MapAuthEndpoints();
+app.MapGraphQL();
 
 app.Run();
 

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MultiTech.Platform.Application.Abstractions.Persistence;
+using MultiTech.Platform.Domain.Dashboard;
 using MultiTech.Platform.Domain.Users;
 
 namespace MultiTech.Platform.Infrastructure.Persistence;
@@ -15,6 +16,26 @@ public sealed class PlatformDbContext(DbContextOptions<PlatformDbContext> option
 
     /// <inheritdoc />
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
+    /// <summary>
+    /// Gets the dashboard sites.
+    /// </summary>
+    public DbSet<Site> Sites => Set<Site>();
+
+    /// <summary>
+    /// Gets the dashboard devices.
+    /// </summary>
+    public DbSet<Device> Devices => Set<Device>();
+
+    /// <summary>
+    /// Gets the dashboard alerts.
+    /// </summary>
+    public DbSet<Alert> Alerts => Set<Alert>();
+
+    /// <summary>
+    /// Gets the telemetry message aggregates.
+    /// </summary>
+    public DbSet<TelemetryMessageAggregate> TelemetryMessageAggregates => Set<TelemetryMessageAggregate>();
 
     /// <inheritdoc />
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -10,6 +10,7 @@ using MultiTech.Platform.Application.Abstractions.Clock;
 using MultiTech.Platform.Application.Abstractions.Persistence;
 using MultiTech.Platform.Infrastructure.Authentication;
 using MultiTech.Platform.Infrastructure.Persistence;
+using MultiTech.Platform.Infrastructure.Persistence.Seed;
 using MultiTech.Platform.Infrastructure.Services;
 
 namespace MultiTech.Platform.Infrastructure.DependencyInjection;
@@ -53,6 +54,8 @@ public static class InfrastructureServiceCollectionExtensions
             serviceProvider.GetRequiredService<PlatformDbContext>());
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IDashboardOverviewReadRepository, DashboardOverviewReadRepository>();
+        services.AddScoped<DashboardOverviewSeeder>();
 
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IAccessTokenProvider, JwtAccessTokenProvider>();

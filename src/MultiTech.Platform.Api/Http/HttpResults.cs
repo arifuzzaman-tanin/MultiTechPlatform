@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using MultiTech.Platform.Application.Common.Results;
+using ApplicationError = MultiTech.Platform.Application.Common.Results.Error;
 
 namespace MultiTech.Platform.Api.Http;
 
@@ -15,7 +16,7 @@ public static class HttpResults
     /// <param name="error">The application error.</param>
     /// <param name="httpContext">The HTTP context.</param>
     /// <returns>The problem response.</returns>
-    public static IResult Problem(Error error, HttpContext httpContext)
+    public static IResult Problem(ApplicationError error, HttpContext httpContext)
     {
         int statusCode = error.Type switch
         {

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MultiTech.Platform.Infrastructure.Persistence;
+using MultiTech.Platform.Infrastructure.Persistence.Seed;
 
 namespace MultiTech.Platform.Api.DependencyInjection;
 
@@ -41,6 +42,9 @@ public static class DatabaseMigrationExtensions
             {
                 await dbContext.Database.MigrateAsync(cancellationToken);
                 logger.LogInformation("Applied database migrations successfully.");
+
+                DashboardOverviewSeeder seeder = scope.ServiceProvider.GetRequiredService<DashboardOverviewSeeder>();
+                await seeder.SeedAsync(cancellationToken);
 
                 return host;
             }

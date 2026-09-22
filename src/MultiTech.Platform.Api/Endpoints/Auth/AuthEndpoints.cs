@@ -1,6 +1,5 @@
 using MultiTech.Platform.Api.Http;
 using MultiTech.Platform.Application.Abstractions.Messaging;
-using MultiTech.Platform.Application.Common.Results;
 using MultiTech.Platform.Application.Features.Authentication;
 using MultiTech.Platform.Application.Features.Authentication.GetCurrentUser;
 using MultiTech.Platform.Application.Features.Authentication.Login;
@@ -8,6 +7,10 @@ using MultiTech.Platform.Application.Features.Authentication.Logout;
 using MultiTech.Platform.Application.Features.Authentication.Refresh;
 using MultiTech.Platform.Application.Features.Authentication.Register;
 using MultiTech.Platform.Contracts.Authentication;
+using ApplicationResult = MultiTech.Platform.Application.Common.Results.Result;
+using RegisterUserApplicationResult = MultiTech.Platform.Application.Common.Results.Result<MultiTech.Platform.Application.Features.Authentication.Register.RegisterUserResult>;
+using LoginApplicationResult = MultiTech.Platform.Application.Common.Results.Result<MultiTech.Platform.Application.Features.Authentication.Login.LoginResult>;
+using AuthenticatedUserApplicationResult = MultiTech.Platform.Application.Common.Results.Result<MultiTech.Platform.Application.Features.Authentication.AuthenticatedUserDto>;
 
 namespace MultiTech.Platform.Api.Endpoints.Auth;
 
@@ -53,7 +56,7 @@ public static class AuthEndpoints
         HttpContext httpContext,
         CancellationToken cancellationToken)
     {
-        Result<RegisterUserResult> result = await handler.Handle(
+        RegisterUserApplicationResult result = await handler.Handle(
             new RegisterUserCommand(
                 request.Name,
                 request.Email,
@@ -81,7 +84,7 @@ public static class AuthEndpoints
         HttpContext httpContext,
         CancellationToken cancellationToken)
     {
-        Result<LoginResult> result = await handler.Handle(
+        LoginApplicationResult result = await handler.Handle(
             new LoginCommand(request.Email, request.Password),
             cancellationToken);
 
@@ -102,7 +105,7 @@ public static class AuthEndpoints
     {
         string? refreshToken = httpContext.Request.Cookies[RefreshTokenCookieName];
 
-        Result<LoginResult> result = await handler.Handle(
+        LoginApplicationResult result = await handler.Handle(
             new RefreshCommand(refreshToken ?? string.Empty),
             cancellationToken);
 
@@ -123,7 +126,7 @@ public static class AuthEndpoints
         CancellationToken cancellationToken)
     {
         string? refreshToken = httpContext.Request.Cookies[RefreshTokenCookieName];
-        Result result = await handler.Handle(new LogoutCommand(refreshToken), cancellationToken);
+        ApplicationResult result = await handler.Handle(new LogoutCommand(refreshToken), cancellationToken);
 
         ClearRefreshTokenCookie(httpContext.Response);
 
@@ -140,7 +143,7 @@ public static class AuthEndpoints
         HttpContext httpContext,
         CancellationToken cancellationToken)
     {
-        Result<AuthenticatedUserDto> result = await handler.Handle(
+        AuthenticatedUserApplicationResult result = await handler.Handle(
             new GetCurrentUserQuery(),
             cancellationToken);
 

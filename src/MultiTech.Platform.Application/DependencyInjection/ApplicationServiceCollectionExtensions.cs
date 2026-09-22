@@ -5,6 +5,7 @@ using MultiTech.Platform.Application.Features.Authentication.Login;
 using MultiTech.Platform.Application.Features.Authentication.Logout;
 using MultiTech.Platform.Application.Features.Authentication.Refresh;
 using MultiTech.Platform.Application.Features.Authentication.Register;
+using MultiTech.Platform.Application.Features.Dashboard.GetOverview;
 
 namespace MultiTech.Platform.Application.DependencyInjection;
 
@@ -27,6 +28,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddScoped<ICommandHandler<RefreshCommand, LoginResult>, RefreshCommandHandler>();
         services.AddScoped<ICommandHandler<LogoutCommand>, LogoutCommandHandler>();
         services.AddScoped<IQueryHandler<GetCurrentUserQuery, Features.Authentication.AuthenticatedUserDto>, GetCurrentUserQueryHandler>();
+        services.AddScoped<IQueryHandler<GetDashboardOverviewQuery, DashboardOverviewDto>, GetDashboardOverviewQueryHandler>();
 
         return services;
     }

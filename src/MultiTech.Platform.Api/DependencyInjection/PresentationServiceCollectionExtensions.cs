@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.RateLimiting;
+using MultiTech.Platform.Api.GraphQL;
 
 namespace MultiTech.Platform.Api.DependencyInjection;
 
@@ -21,6 +22,10 @@ public static class PresentationServiceCollectionExtensions
         services.AddOpenApi();
         services.AddHealthChecks();
         services.AddProblemDetails();
+        services
+            .AddGraphQLServer()
+            .AddQueryType<DashboardQueries>();
+
         services.AddRateLimiter(options =>
         {
             options.AddFixedWindowLimiter(AuthRateLimitPolicyName, limiterOptions =>
