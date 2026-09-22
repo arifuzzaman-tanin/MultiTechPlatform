@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Application\MultiTech.Platform.Application.csproj" />
+    <ProjectReference Include="..\..\src\MultiTech.Platform.Domain\MultiTech.Platform.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
