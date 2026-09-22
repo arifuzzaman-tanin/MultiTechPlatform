@@ -61,9 +61,12 @@ public sealed class AuthenticationFunctionalTests
         Assert.NotNull(login);
         Assert.False(string.IsNullOrWhiteSpace(login.AccessToken));
         Assert.Equal(registeredUser.Id, login.User.Id);
-        Assert.Contains(
+        string refreshCookieHeader = Assert.Single(
             loginResponse.Headers.GetValues("Set-Cookie"),
             value => value.Contains("__Host-multitech-refresh", StringComparison.Ordinal));
+
+        Assert.Contains("path=/", refreshCookieHeader, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("secure", refreshCookieHeader, StringComparison.OrdinalIgnoreCase);
 
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
             "Bearer",

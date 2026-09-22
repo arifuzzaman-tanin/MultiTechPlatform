@@ -176,7 +176,7 @@ public static class AuthEndpoints
                 HttpOnly = true,
                 Secure = true,
                 SameSite = SameSiteMode.Strict,
-                Path = "/api/v1/auth",
+                Path = "/",
                 Expires = result.RefreshTokenExpiresAtUtc
             });
     }
@@ -190,8 +190,7 @@ public static class AuthEndpoints
                 HttpOnly = true,
                 Secure = true,
                 SameSite = SameSiteMode.Strict,
-                Path = "/api/v1/auth"
+                Path = "/"
             });
     }
 }
-
